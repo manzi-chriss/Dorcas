@@ -57,7 +57,8 @@ const Team = () => {
           Meet Our Team
         </h2>
         <p className="text-sm sm:text-md md:text-lg text-gray-300 leading-relaxed mb-6">
-          Our team is made up of highly talented and dedicated individuals. our mission is to uplift and empower individuals by providing support, education, and community outreach. We strive to create a world where everyone, regardless of their background or circumstances, can achieve their full potential and live with dignity.
+         
+Our team is made up of highly anointed and talented in Serving God, this team helps the whole MINISTRY through uplifting and empower individuals by providing support, services to the people and financially, they are always there for who needs them, we strive to create Happy to the people who doesn’t.
         </p>
       </div>
       <div className="relative w-full h-64 sm:h-96 md:h-[28rem] flex items-center justify-center mt-8 overflow-hidden">
