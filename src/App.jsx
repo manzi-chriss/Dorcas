@@ -24,7 +24,7 @@ function App() {
       <div>
         <Header />
         <IdeaPopup />
-        <div className="h-16" />
+        <div className="h-18" />
         <Routes>
           <Route exact path="/" element={<Banner />} />
           <Route path="/mission" element={<Mission />} />
