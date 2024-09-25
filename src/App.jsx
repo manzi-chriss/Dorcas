@@ -13,37 +13,34 @@ import NotificationPopup from './Popup/PopUp';
 import IdeaPopup from './Popup/IdeaPopUp';
 import Ministries from './components/Pages/Ministries';
 import Footer from './components/Footer/Footer';
+import NotFound from './components/Pages/NotFound'; // Import NotFound component
 import './App.css';
-import { div } from 'framer-motion/client';
 
 function App() {
   return (
     <div>
-    
-    <Router>
-      <div>
-        <Header />
-        <IdeaPopup />
-        <div className="h-20" />
-        <Routes>
-          <Route exact path="/" element={<Banner />} />
-          <Route path="/mission" element={<MissionSection />} />
-          <Route path="/vision" element={<Vision />} />
-          <Route path="/history" element={<History />} />
-          <Route path="//team" element={<Team />} />
-          <Route path="/Gallery" element={<Gallery />} />
-          <Route path="/videos" element={<Videos />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/ministries" element={<Ministries />} />
-        </Routes>
-        <NotificationPopup />
-        <div className="h-16" />
-   
-        <Footer />
-      </div>
-    </Router>
-    
-    
+      <Router>
+        <div>
+          <Header />
+          <IdeaPopup />
+          <div className="h-20" />
+          <Routes>
+            <Route exact path="/" element={<Banner />} />
+            <Route path="/mission" element={<MissionSection />} />
+            <Route path="/vision" element={<Vision />} />
+            <Route path="/history" element={<History />} />
+            <Route path="/team" element={<Team />} /> {/* Corrected this path */}
+            <Route path="/gallery" element={<Gallery />} />
+            <Route path="/videos" element={<Videos />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/ministries" element={<Ministries />} />
+            <Route path="*" element={<NotFound />} /> {/* Fallback route for 404 */}
+          </Routes>
+          <NotificationPopup />
+          <div className="h-16" />
+          <Footer />
+        </div>
+      </Router>
     </div>
   );
 }
