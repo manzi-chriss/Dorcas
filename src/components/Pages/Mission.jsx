@@ -48,7 +48,7 @@ const Mission = () => {
               {/* Overlay with Founder Information */}
               <div className={`absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center transition-opacity duration-500 ease-in-out opacity-0 group-hover:opacity-100`}>
                 <div className="text-white text-center">
-                  <h2 className="text-2xl font-bold">Founder: John Doe</h2>
+                  <h2 className="text-2xl font-bold">Founder: Dorcas</h2>
                   <p className="mt-2">Visionary and Leader of Dorcas Ministries</p>
                 </div>
               </div>
