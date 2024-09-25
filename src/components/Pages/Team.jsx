@@ -1,16 +1,18 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect, memo } from 'react';
 import member1 from '../../assets/img/member.jpg';
 import member2 from '../../assets/img/member2.jpg';
 import member3 from '../../assets/img/member3.jpg';
 import member4 from '../../assets/img/member4.jpg';
 import member5 from '../../assets/img/member5.jpg';
+import member6 from '../../assets/img/member6.jpg';
 
 const teamMembers = [
-  { name: 'Dorcas', position: 'Founder', image: member1 },
-  { name: 'Alice', position: 'CEO', image: member2 },
-  { name: 'Bob', position: 'COO', image: member3 },
-  { name: 'Charlie', position: 'CTO', image: member4 },
-  { name: 'Eve', position: 'CFO', image: member5 },
+  { name: 'APOSTLE CLAIRE', position: 'Founder', image: member1 },
+  { name: 'PASTOR JEAN', position: 'WISER', image: member2 },
+  { name: 'EV LILIANE', position: 'CO ACCOUNTANT', image: member3 },
+  { name: 'DEACON BEATRICE', position: 'WISER', image: member4 },
+  { name: 'EV. UWASE NELLY', position: 'ACCOUNTANT', image: member5 },
+  { name: 'EV NELLA', position: 'SECRETARY', image: member6 },
 ];
 
 const Team = () => {
@@ -55,7 +57,7 @@ const Team = () => {
           Meet Our Team
         </h2>
         <p className="text-sm sm:text-md md:text-lg text-gray-300 leading-relaxed mb-6">
-          Our team is made up of highly talented and dedicated . We strive to create a world where everyone, regardless of their background or circumstances, can achieve their full potential and live with dignity. We believe in fostering growth, compassion, and faith through our various ministries and programs that target the spiritual, emotional, and physical needs of people. Our goal is to serve as a beacon of hope, lighting the path for those who seek to improve their lives and the lives of others. Whether through feeding programs, educational initiatives, or spiritual guidance, we are committed to making a lasting positive impact on our community and beyond
+          Our team is made up of highly talented and dedicated individuals. our mission is to uplift and empower individuals by providing support, education, and community outreach. We strive to create a world where everyone, regardless of their background or circumstances, can achieve their full potential and live with dignity.
         </p>
       </div>
       <div className="relative w-full h-64 sm:h-96 md:h-[28rem] flex items-center justify-center mt-8 overflow-hidden">
@@ -84,4 +86,5 @@ const Team = () => {
   );
 };
 
-export default Team;
+// Memoizing the Team component to prevent unnecessary re-renders
+export default memo(Team);
