@@ -5,7 +5,7 @@ import Banner from './components/Banner/Banner';
 import About from './components/Pages/About';
 import Gallery from './components/Pages/Gallery';
 import History from './components/Pages/History';
-import Mission from './components/Pages/Mission';
+import MissionSection from './components/Pages/Mission';
 import Team from './components/Pages/Team';
 import Vision from './components/Pages/Vision';
 import Videos from './components/Pages/Videos';
@@ -27,7 +27,7 @@ function App() {
         <div className="h-20" />
         <Routes>
           <Route exact path="/" element={<Banner />} />
-          <Route path="/mission" element={<Mission />} />
+          <Route path="/mission" element={<MissionSection />} />
           <Route path="/vision" element={<Vision />} />
           <Route path="/history" element={<History />} />
           <Route path="//team" element={<Team />} />
@@ -38,8 +38,7 @@ function App() {
         </Routes>
         <NotificationPopup />
         <div className="h-16" />
-        <Mission/>
-       <Vision/>
+   
         <Footer />
       </div>
     </Router>
