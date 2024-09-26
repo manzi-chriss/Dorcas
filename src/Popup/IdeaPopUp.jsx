@@ -5,17 +5,15 @@ const IdeaPopup = () => {
   const [isPopupVisible, setIsPopupVisible] = useState(false);
   const [idea, setIdea] = useState('');
   const [messages, setMessages] = useState([]);
+  const [successMessage, setSuccessMessage] = useState('');
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Here you would typically send the message to your backend using a web token
-    // For demonstration, we'll just log it and update the state
     console.log('User Idea:', idea);
 
-    // Mock saving message with a web token
     const token = 'your-web-token'; // Replace with actual token logic
-    const response = await fetch('https://your-api-endpoint.com/messages', {
+    const response = await fetch('https://dorcas-backend.onrender.com/message', { // Update to your API endpoint
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -25,9 +23,14 @@ const IdeaPopup = () => {
     });
 
     if (response.ok) {
-      setMessages([...messages, idea]); // Add the message to the chat
+      const newMessage = await response.json(); // Get the created message from the response
+      setMessages([...messages, newMessage.message]); // Add the message to the chat
       setIdea(''); // Clear input after submission
+      setSuccessMessage('Idea sent successfully!'); // Set success message
       setIsPopupVisible(false); // Hide the popup after submission
+
+      // Clear success message after a few seconds
+      setTimeout(() => setSuccessMessage(''), 3000);
     } else {
       console.error('Failed to send message');
     }
@@ -54,6 +57,11 @@ const IdeaPopup = () => {
               &times; {/* Close icon */}
             </button>
           </div>
+          {successMessage && (
+            <div className="mt-2 text-green-400">
+              {successMessage}
+            </div>
+          )}
           <div className="mt-4">
             {messages.map((msg, index) => (
               <div key={index} className="bg-gray-700 p-2 rounded-md mb-2">
@@ -67,7 +75,7 @@ const IdeaPopup = () => {
         onClick={() => setIsPopupVisible(!isPopupVisible)} // Toggle visibility
         className="fixed top-16 right-4 bg-red-500 text-white p-3 rounded-full shadow-lg z-50 transition-opacity duration-300"
       >
-        <FaCommentDots  className=''/> {/* Message Us icon */}
+        <FaCommentDots /> {/* Message Us icon */}
       </button>
     </div>
   );

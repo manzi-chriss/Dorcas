@@ -40,7 +40,7 @@ const Header = () => {
         { title: 'Whatsapp', link: '/whatsapp' },
         { title: 'Facebook', link: '/facebook' },
         { title: 'YouTube', link: '/youtube' },
-        { title: 'LinkedIn', link: '/linkedin' },
+        { title: 'ZOOM', link: '/https://us06web.zoom.us/j/83703599665' },
         { title: 'Email', link: '/email' },
       ],
     },

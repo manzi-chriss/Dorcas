@@ -1,8 +1,8 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Header from './components/TopBar/TopBar';
-import Banner from './components/Banner/Banner';
-import About from './components/Pages/About';
+import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
+import Header from './components/TopBar/TopBar'; 
+import Banner from './components/Banner/Banner'; 
+import About from './components/Pages/About'; 
 import Gallery from './components/Pages/Gallery';
 import History from './components/Pages/History';
 import MissionSection from './components/Pages/Mission';
@@ -14,9 +14,20 @@ import IdeaPopup from './Popup/IdeaPopUp';
 import Ministries from './components/Pages/Ministries';
 import Footer from './components/Footer/Footer';
 import NotFound from './components/Pages/NotFound'; // Import NotFound component
+import AdminLayout from './components/Admin/Header/Layout';
+import AdminMessage from './Popup/AdminMessage';
+import AdminLoginPage from './components/Admin/AdminLoginPage';
 import './App.css';
 
 function App() {
+  // Retrieve the token from localStorage
+  const token = localStorage.getItem('dorcasmistries');
+
+  // Function to verify if the user is authenticated
+  const isAuthenticated = () => {
+    return !!token;
+  };
+
   return (
     <div>
       <Router>
@@ -34,15 +45,21 @@ function App() {
             <Route path="/videos" element={<Videos />} />
             <Route path="/about" element={<About />} />
             <Route path="/ministries" element={<Ministries />} />
+            <Route 
+              path="/admin" 
+              element={isAuthenticated() ? <AdminLayout /> : <Navigate to="/admin/login" />} 
+            /> {/* Admin layout */}
+            <Route path="/admin/login" element={<AdminLoginPage />} /> {/* Admin login page */}
             <Route path="*" element={<NotFound />} /> {/* Fallback route for 404 */}
           </Routes>
+          <AdminMessage /> 
           <NotificationPopup />
           <div className="h-16" />
           <Footer />
         </div>
       </Router>
-    </div>
-  );
-}
+    </div> 
+  ); 
+} 
 
-export default App;
+export default App; 
