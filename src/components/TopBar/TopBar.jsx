@@ -23,12 +23,12 @@ const Header = () => {
         { title: 'Team', link: '/team' },
       ],
     },
-    { title: 'MINISTRIES', link: '/ministries' },
+    
     {
       title: 'MEDIA',
       subMenu: [
         { title: 'Press Gallery', link: '/Gallery' },
-        { title: 'Video Gallery', link: '/media/video-gallery' },
+        { title: 'Video Gallery', link: '/videos' },
       ],
     },
     {

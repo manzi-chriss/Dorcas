@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import LatestVideo from './LatestVideo';
 
 const API_URL = 'https://dorcas-backend.onrender.com/video';
 
@@ -14,7 +13,6 @@ const VideoCard = ({ video }) => {
 
   return (
     <div className="bg-white rounded-lg shadow-lg overflow-hidden h-full flex flex-col">
-      
       <div className="relative w-full h-64 lg:h-72">
         {videoId ? (
           <iframe
@@ -37,16 +35,16 @@ const VideoCard = ({ video }) => {
   );
 };
 
-function Videos() {
-  const [videos, setVideos] = useState([]);
+const LatestVideo = () => {
+  const [latestVideo, setLatestVideo] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    fetchVideos();
+    fetchLatestVideo();
   }, []);
 
-  const fetchVideos = async () => {
+  const fetchLatestVideo = async () => {
     try {
       setLoading(true);
       const response = await fetch(API_URL);
@@ -54,20 +52,20 @@ function Videos() {
         throw new Error('Failed to fetch videos');
       }
       const data = await response.json();
-      // Sort videos by createdAt in descending order
+      // Sort videos by createdAt and get the latest one
       const sortedVideos = data.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
-      setVideos(sortedVideos);
+      setLatestVideo(sortedVideos[0]);
       setError(null);
     } catch (err) {
-      setError('Error loading videos. Please try again later.');
-      console.error('Error fetching videos:', err);
+      setError('Error loading the latest video. Please try again later.');
+      console.error('Error fetching latest video:', err);
     } finally {
       setLoading(false);
     }
   };
 
   if (loading) {
-    return <div className="text-center py-8 text-2xl">Loading videos...</div>;
+    return <div className="text-center py-8 text-2xl">Loading latest video...</div>;
   }
 
   if (error) {
@@ -76,18 +74,14 @@ function Videos() {
 
   return (
     <div className="container mx-auto px-4 py-12">
-      <h1 className="text-4xl font-bold mb-10 text-center">Featured Videos</h1>
-      {videos.length === 0 ? (
-        <p className="text-center text-2xl text-gray-500">No videos available at the moment.</p>
+      <h1 className="text-4xl font-bold mb-10 text-center">Latest Video</h1>
+      {latestVideo ? (
+        <VideoCard video={latestVideo} />
       ) : (
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-          {videos.map((video) => (
-            <VideoCard key={video._id} video={video} />
-          ))}
-        </div>
+        <p className="text-center text-2xl text-gray-500">No latest video available.</p>
       )}
     </div>
   );
-}
+};
 
-export default Videos;
+export default LatestVideo;

@@ -33,11 +33,11 @@ const Banner = () => {
         ))}
         <div className="absolute inset-0 bg-black bg-opacity-50 flex flex-col justify-center items-center text-center text-white p-6 md:p-8 lg:p-10 xl:p-12">
           <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
-            Together, we can make a difference
+                  YOUR WORK WILL ACCOMPANY YOU
+
           </h1>
           <p className="text-base sm:text-lg md:text-xl lg:text-2xl mb-6">
-            His Church provides secure, ethical, sustainable, full transport and logistics, charitable solutions for surplus products including food (ambient, chilled and frozen), clothing and a diverse range of supplies. We redistribute these products through a network of over 3,000 charities, at home and abroad, to help vulnerable people.
-          </p>
+          This ministry provides missionary evangelism, preaching, get people recieve salvation, baptizing, helping orphans and widows and the poor, this is done in various countries around the world. scroll down for more...          </p>
           <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
             <a href="/company-solutions" className="bg-white text-black px-6 py-3 rounded-md shadow-lg hover:bg-gray-300 transition">
               COMPANY SOLUTIONS
