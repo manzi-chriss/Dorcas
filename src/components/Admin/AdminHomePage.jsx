@@ -1,15 +1,19 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom'; 
-import PostMessage from './PostMessage'; 
-import UserMessages from './UserMessages';
-import AddVideo from './AddVideo'; 
+import { Link } from 'react-router-dom';  
+import PostMessage from './PostMessage';  
+import UserMessages from './UserMessages';  
+import AddVideo from './AddVideo';   
+import ZoomNotificationForm from './ZoomNotificationForm';  
+import ZoomNotificationTable from './ZoomNotificationTable'; 
 
-const AdminHomePage = () => {
-  const [time, setTime] = useState(new Date());
-  const [greeting, setGreeting] = useState('');
-  const [isPostModalOpen, setIsPostModalOpen] = useState(false);
-  const [isMessageModalOpen, setIsMessageModalOpen] = useState(false);
-  const [isAddVideoModalOpen, setIsAddVideoModalOpen] = useState(false);
+const AdminHomePage = () => { 
+  const [time, setTime] = useState(new Date()); 
+  const [greeting, setGreeting] = useState(''); 
+  const [isPostModalOpen, setIsPostModalOpen] = useState(false); 
+  const [isMessageModalOpen, setIsMessageModalOpen] = useState(false); 
+  const [isAddVideoModalOpen, setIsAddVideoModalOpen] = useState(false); 
+  const [isZoomNotificationModalOpen, setIsZoomNotificationModalOpen] = useState(false);
+  const [isZoomNotificationTableModalOpen, setIsZoomNotificationTableModalOpen] = useState(false); 
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -28,6 +32,8 @@ const AdminHomePage = () => {
   const togglePostModal = () => setIsPostModalOpen(!isPostModalOpen);
   const toggleMessageModal = () => setIsMessageModalOpen(!isMessageModalOpen);
   const toggleAddVideoModal = () => setIsAddVideoModalOpen(!isAddVideoModalOpen);
+  const toggleZoomNotificationModal = () => setIsZoomNotificationModalOpen(!isZoomNotificationModalOpen);
+  const toggleZoomNotificationTableModal = () => setIsZoomNotificationTableModalOpen(!isZoomNotificationTableModalOpen);
 
   return (
     <div className="min-h-screen bg-gray-700 p-6">
@@ -58,6 +64,16 @@ const AdminHomePage = () => {
             <h2 className="text-xl font-semibold mb-4 text-black">Users</h2>
             <p className="text-black">Manage user accounts and roles.</p>
           </Link>
+
+          <button onClick={toggleZoomNotificationModal} className="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow">
+            <h2 className="text-xl font-semibold mb-4 text-black">Zoom Notifications</h2>
+            <p className="text-black">Posting Notification.</p>
+          </button>
+
+          <button onClick={toggleZoomNotificationTableModal} className="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow">
+            <h2 className="text-xl font-semibold mb-4 text-black">Zoom Notification Table</h2>
+            <p className="text-black">View Zoom notifications.</p>
+          </button>
         </div>
       </div>
 
@@ -91,12 +107,42 @@ const AdminHomePage = () => {
       {isAddVideoModalOpen && (
         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
           <div className="bg-white p-6 rounded-lg shadow-lg w-11/12 md:w-2/3 lg:w-1/2 max-h-[80vh] overflow-y-auto">
+            <div className="flex justify-between">
+              <h2 className="text-xl font-semibold">Add Video</h2>
+              <button onClick={toggleAddVideoModal} className="text-red-500 text-lg">&times;</button>
+            </div>
             <AddVideo onClose={toggleAddVideoModal} />
           </div>
         </div>
       )}
-    </div>
-  );
+
+      {/* Modal for Zoom Notifications */}
+      {isZoomNotificationModalOpen && (
+        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
+          <div className="bg-white p-6 rounded-lg shadow-lg w-11/12 md:w-2/3 lg:w-1/2 max-h-[80vh] overflow-y-auto">
+            <div className="flex justify-between">
+              <h2 className="text-xl font-semibold">Zoom Notifications</h2>
+              <button onClick={toggleZoomNotificationModal} className="text-red-500 text-lg">&times;</button>
+            </div>
+            <ZoomNotificationForm onClose={toggleZoomNotificationModal} />
+          </div>
+        </div>
+      )}
+
+      {/* Modal for Zoom Notification Table */}
+      {isZoomNotificationTableModalOpen && (
+        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
+          <div className="bg-white p-6 rounded-lg shadow-lg w-11/12 md:w-2/3 lg:w-1/2 max-h-[80vh] overflow-y-auto">
+            <div className="flex justify-between">
+              <h2 className="text-xl font-semibold">Zoom Notification Table</h2>
+              <button onClick={toggleZoomNotificationTableModal} className="text-red-500 text-lg">&times;</button>
+            </div>
+            <ZoomNotificationTable onClose={toggleZoomNotificationTableModal} />
+          </div>
+        </div>
+      )}
+    </div> 
+  ); 
 };
 
 export default AdminHomePage;

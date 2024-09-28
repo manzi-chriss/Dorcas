@@ -19,7 +19,7 @@ const NotificationPopup = () => {
       text: 'Whatsapp & Tel:+254 757 646 917', 
       icon: <FaWhatsapp />, 
       duration: 2000, 
-      link: 'https://whatsapp.com' 
+      link: 'https://api.whatsapp.com/qr/7RTTU5V3PMQPK1?autoload=1&app_absent=0' 
     },
     { 
       text: 'dorcastv@gmail.com', 

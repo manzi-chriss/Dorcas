@@ -17,6 +17,7 @@ import NotFound from './components/Pages/NotFound'; // Import NotFound component
 import AdminLayout from './components/Admin/Header/Layout';
 import AdminMessage from './Popup/AdminMessage';
 import AdminLoginPage from './components/Admin/AdminLoginPage';
+import ZoomNotificationPopup from './Popup/ZoomNotificationPopup';
 import './App.css';
 
 function App() {
@@ -53,6 +54,7 @@ function App() {
             <Route path="*" element={<NotFound />} /> {/* Fallback route for 404 */}
           </Routes>
           <AdminMessage /> 
+          <ZoomNotificationPopup />  {/* Zoom notification popup */}
           <NotificationPopup />
           <div className="h-16" />
           <Footer />

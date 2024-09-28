@@ -15,16 +15,19 @@ const Footer = () => {
               <NavLink to="/" className="hover:underline">Home</NavLink>
             </li>
             <li>
-              <NavLink to="/about" className="hover:underline">About</NavLink>
+              <NavLink to="/vision" className="hover:underline">vision</NavLink>
             </li>
             <li>
-              <NavLink to="/ministries" className="hover:underline">Ministries</NavLink>
+              <NavLink to="/mission" className="hover:underline">Mission</NavLink>
             </li>
             <li>
-              <NavLink to="/media" className="hover:underline">Media</NavLink>
+              <NavLink to="/videos" className="hover:underline">video</NavLink>
             </li>
             <li>
-              <NavLink to="/connect" className="hover:underline">Connect</NavLink>
+              <NavLink to="/Gallery" className="hover:underline">Gallery</NavLink>
+            </li>
+            <li>
+              <NavLink to="/history" className="hover:underline">History</NavLink>
             </li>
           </ul>
         </nav>
