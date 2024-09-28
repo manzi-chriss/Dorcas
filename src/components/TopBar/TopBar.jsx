@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronDown, Menu, X } from 'lucide-react';
 import { PropagateLoader } from 'react-spinners';
-import Logo from '../../assets/img/LogoPng.png'; 
-import { NavLink, useLocation, useNavigate } from 'react-router-dom'; 
-
+import Logo from '../../assets/img/LogoPng.png';  
+import { NavLink, useLocation, useNavigate } from 'react-router-dom';  
+ 
 const Header = () => { 
   const [isMenuOpen, setIsMenuOpen] = useState(false); 
   const [expandedMenu, setExpandedMenu] = useState(null); 
@@ -34,14 +34,11 @@ const Header = () => {
     {
       title: 'CONNECT',
       subMenu: [
-        { title: 'Contact Us', link: '/connect/contact' },
-        { title: 'Instagram', link: '/instagram' },
-        { title: 'Twitter', link: '/twitter' },
-        { title: 'Whatsapp', link: '/whatsapp' },
-        { title: 'Facebook', link: '/facebook' },
-        { title: 'YouTube', link: '/youtube' },
-        { title: 'ZOOM', link: '/https://us06web.zoom.us/j/83703599665' },
-        { title: 'Email', link: '/email' },
+        { title: 'Instagram', link: 'https://www.instagram.com/apostle__dorcas/', external: true },
+        { title: 'Whatsapp', link: 'https://wa.me/1234567890', external: true }, // Replace with actual WhatsApp number
+        { title: 'Facebook', link: 'https://www.facebook.com/', external: true },
+        { title: 'YouTube', link: 'https://www.youtube.com/@dorcasministryinkenya', external: true },
+        { title: 'ZOOM', link: 'https://us06web.zoom.us/j/83703599665', external: true },
       ],
     },
   ];
@@ -147,12 +144,23 @@ const Header = () => {
                         >
                           {item.subMenu.map((subItem, subIndex) => (
                             <li key={subIndex} className="py-1">
-                              <motion.div
-                                className="block text-sm text-white hover:underline hover:underline-red-500 px-4 py-2 rounded-md hover:bg-gray-700 transition-colors"
-                                onClick={() => handleNavigation(subItem.link)}
-                              >
-                                {subItem.title}
-                              </motion.div>
+                              {subItem.external ? (
+                                <a
+                                  href={subItem.link}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className="block text-sm text-white hover:underline hover:underline-red-500 px-4 py-2 rounded-md hover:bg-gray-700 transition-colors"
+                                >
+                                  {subItem.title}
+                                </a>
+                              ) : (
+                                <motion.div
+                                  className="block text-sm text-white hover:underline hover:underline-red-500 px-4 py-2 rounded-md hover:bg-gray-700 transition-colors"
+                                  onClick={() => handleNavigation(subItem.link)}
+                                >
+                                  {subItem.title}
+                                </motion.div>
+                              )}
                             </li>
                           ))}
                         </motion.ul>
@@ -168,5 +176,5 @@ const Header = () => {
     </>
   );
 };
-
+ 
 export default Header;
