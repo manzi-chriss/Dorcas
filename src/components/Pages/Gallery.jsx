@@ -1,12 +1,12 @@
-import React, { useEffect, useState } from 'react';
+import  { useEffect, useState } from 'react';
 import ImageModal from './ImageModal'; // Import the modal component
-import img1 from '../../../public/gallery/img1.JPEG';
-import img2 from '../../../public/gallery/img2.JPEG';
-import img3 from '../../../public/gallery/img3.JPEG';
-import img4 from '../../../public/gallery/img4.JPEG';
-import img5 from '../../../public/gallery/img5.JPEG';
+import image1 from '../../assets/img/member.jpg';
+import image2 from '../../assets/img/member2.jpg';
+import image3 from '../../assets/img/member4.jpg';
+import image4 from '../../assets/img/member5.jpg';
+import image5 from '../../assets/img/member6.jpg';
 
-const images = [img1, img2, img3, img4, img5];
+const images = [image1, image2, image3, image4, image5];
 
 function Gallery() {
   const [currentIndex, setCurrentIndex] = useState(0);
