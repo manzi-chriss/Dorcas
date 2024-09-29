@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronDown, Menu, X } from 'lucide-react';
+import { ChevronDown, Menu, X, ExternalLink } from 'lucide-react';
 import { PropagateLoader } from 'react-spinners';
 import Logo from '../../assets/img/LogoPng.png';  
-import { NavLink, useLocation, useNavigate } from 'react-router-dom';  
- 
+import { NavLink, useLocation, useNavigate } from 'react-router-dom';
+
 const Header = () => { 
   const [isMenuOpen, setIsMenuOpen] = useState(false); 
   const [expandedMenu, setExpandedMenu] = useState(null); 
@@ -23,7 +23,6 @@ const Header = () => {
         { title: 'Team', link: '/team' },
       ],
     },
-    
     {
       title: 'MEDIA',
       subMenu: [
@@ -35,21 +34,12 @@ const Header = () => {
       title: 'CONNECT',
       subMenu: [
         { title: 'Instagram', link: 'https://www.instagram.com/apostle__dorcas/', external: true },
-        { title: 'Whatsapp', link: 'https://wa.me/1234567890', external: true }, // Replace with actual WhatsApp number
-        { title: 'Facebook', link: 'https://www.facebook.com/', external: true },
+        { title: 'Whatsapp', link: 'https://wa.me/qr/7RTTU5V3PMQPK1', external: true },
         { title: 'YouTube', link: 'https://www.youtube.com/@dorcasministryinkenya', external: true },
         { title: 'ZOOM', link: 'https://us06web.zoom.us/j/83703599665', external: true },
       ],
     },
   ];
-
-  const handleMouseEnter = (index) => {
-    setExpandedMenu(index);
-  };
-
-  const handleMouseLeave = () => {
-    setExpandedMenu(null);
-  };
 
   const toggleSubMenu = (index) => {
     setExpandedMenu(prev => (prev === index ? null : index));
@@ -62,17 +52,24 @@ const Header = () => {
   const handleNavigation = (link) => {
     setIsLoading(true);
     setIsMenuOpen(false);
+    setExpandedMenu(null);
     setTimeout(() => {
       navigate(link);
       setIsLoading(false);
-    }, 1000); // Simulating a 1-second loading time
+    }, 1000);
+  };
+
+  const handleOutsideClick = (e) => {
+    if (!e.target.closest('.menu-item')) {
+      setExpandedMenu(null);
+    }
   };
 
   return (
     <>
       {isLoading && (
         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-70 z-50">
-          <PropagateLoader color="#FF0000" size={15} /> {/* Changed color to red */}
+          <PropagateLoader color="#FF0000" size={15} />
         </div>
       )}
       <motion.header
@@ -80,6 +77,7 @@ const Header = () => {
         initial={{ opacity: 0, y: -50 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
+        onClick={handleOutsideClick}
       >
         <div className="container mx-auto flex flex-col lg:flex-row justify-between items-center">
           <div className="flex justify-between items-center w-full lg:w-auto mb-4 lg:mb-0">
@@ -105,14 +103,13 @@ const Header = () => {
               {menuItems.map((item, index) => (
                 <li
                   key={index}
-                  className="relative group"
-                  onMouseEnter={() => handleMouseEnter(index)}
-                  onMouseLeave={handleMouseLeave}
+                  className="relative group menu-item"
                 >
                   <motion.div
                     className="flex items-center justify-between cursor-pointer px-4 py-2 rounded-md hover:bg-gray-800 transition-colors"
                     whileHover={{ scale: 1.05 }}
-                    onClick={() => {
+                    onClick={(e) => {
+                      e.stopPropagation();
                       if (item.subMenu) {
                         toggleSubMenu(index);
                       } else {
@@ -135,35 +132,42 @@ const Header = () => {
                   {item.subMenu && (
                     <AnimatePresence>
                       {expandedMenu === index && (
-                        <motion.ul
-                          className="absolute top-full left-0 bg-gray-800 mt-2 p-2 rounded-md shadow-lg z-10"
+                        <motion.div
+                          className="lg:absolute top-full left-0 bg-gray-900 mt-2 rounded-md shadow-lg z-10 w-48"
                           initial={{ opacity: 0, y: -10 }}
                           animate={{ opacity: 1, y: 0 }}
                           exit={{ opacity: 0, y: -10 }}
                           transition={{ duration: 0.2 }}
                         >
-                          {item.subMenu.map((subItem, subIndex) => (
-                            <li key={subIndex} className="py-1">
-                              {subItem.external ? (
-                                <a
-                                  href={subItem.link}
-                                  target="_blank"
-                                  rel="noopener noreferrer"
-                                  className="block text-sm text-white hover:underline hover:underline-red-500 px-4 py-2 rounded-md hover:bg-gray-700 transition-colors"
-                                >
-                                  {subItem.title}
-                                </a>
-                              ) : (
-                                <motion.div
-                                  className="block text-sm text-white hover:underline hover:underline-red-500 px-4 py-2 rounded-md hover:bg-gray-700 transition-colors"
-                                  onClick={() => handleNavigation(subItem.link)}
-                                >
-                                  {subItem.title}
-                                </motion.div>
-                              )}
-                            </li>
-                          ))}
-                        </motion.ul>
+                          <ul className="py-2">
+                            {item.subMenu.map((subItem, subIndex) => (
+                              <li key={subIndex} className="px-4 py-2 hover:bg-gray-800">
+                                {subItem.external ? (
+                                  <a
+                                    href={subItem.link}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="flex items-center text-sm text-white hover:text-red-500 transition-colors"
+                                    onClick={(e) => e.stopPropagation()}
+                                  >
+                                    {subItem.title}
+                                    <ExternalLink size={14} className="ml-2" />
+                                  </a>
+                                ) : (
+                                  <motion.div
+                                    className="flex items-center text-sm text-white hover:text-red-500 transition-colors cursor-pointer"
+                                    onClick={(e) => {
+                                      e.stopPropagation();
+                                      handleNavigation(subItem.link);
+                                    }}
+                                  >
+                                    {subItem.title}
+                                  </motion.div>
+                                )}
+                              </li>
+                            ))}
+                          </ul>
+                        </motion.div>
                       )}
                     </AnimatePresence>
                   )}
@@ -176,5 +180,5 @@ const Header = () => {
     </>
   );
 };
- 
+
 export default Header;
