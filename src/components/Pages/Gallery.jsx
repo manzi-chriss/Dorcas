@@ -49,7 +49,7 @@ function Gallery() {
         />
         <button
           onClick={prevImage}
-          className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white p-2 rounded-full shadow-md hover:bg-gray-200"
+          className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-black p-2 rounded-full shadow-md hover:bg-gray-200"
         >
           &#10094; {/* Left arrow */}
         </button>
