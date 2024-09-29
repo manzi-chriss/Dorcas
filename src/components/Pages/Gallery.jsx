@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import ImageModal from './ImageModal'; // Import the modal component
-import img1 from '../../assets/img/gallery/img1.JPEG';
-import img2 from '../../assets/img/gallery/img2.JPEG';
-import img3 from '../../assets/img/gallery/img3.JPEG';
-import img4 from '../../assets/img/gallery/img4.JPEG';
-import img5 from '../../assets/img/gallery/img5.JPEG';
+import img1 from '../../../public/gallery/img1.JPEG';
+import img2 from '../../../public/gallery/img2.JPEG';
+import img3 from '../../../public/gallery/img3.JPEG';
+import img4 from '../../../public/gallery/img4.JPEG';
+import img5 from '../../../public/gallery/img5.JPEG';
 
 const images = [img1, img2, img3, img4, img5];
 
