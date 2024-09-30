@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
 import { Bell } from 'lucide-react';
 
 const AdminMessage = () => {
@@ -8,9 +7,10 @@ const AdminMessage = () => {
 
   const fetchMessage = async () => {
     try {
-      const response = await axios.get('https://dorcas-backend.onrender.com/admin-message');
-      if (response.data && response.data.length > 0) {
-        setMessage(response.data[0].message);
+      const response = await fetch('https://dorcas-backend.onrender.com/admin-message');
+      const data = await response.json();
+      if (data && data.length > 0) {
+        setMessage(data[0].message);
         setVisible(true);
       } else {
         setMessage(null);
@@ -40,18 +40,18 @@ const AdminMessage = () => {
       <div className="relative">
         <button
           onClick={toggleVisibility}
-          className="bg-blue-500 text-white p-2 rounded-full shadow-lg hover:bg-blue-600 transition-colors duration-200 flex items-center justify-center"
+          className="bg-blue-600 text-white p-2 rounded-full shadow-lg hover:bg-blue-700 transition-colors duration-200 flex items-center justify-center"
           aria-label="Toggle administrative message"
         >
-          <Bell size={24} />
+          <Bell size={20} />
         </button>
         {visible && (
-          <div className="absolute right-0 bottom-12 bg-blue-500 text-white p-3 rounded-lg shadow-lg max-w-sm text-sm">
-            <div className="flex items-center mb-2">
-              <Bell size={16} className="mr-2" />
-              <span className="font-bold">Administrative Message</span>
+          <div className="absolute right-0 bottom-12 w-64 bg-blue-600 text-white rounded-lg shadow-lg p-2 text-sm">
+            <div className="flex items-center text-xs font-semibold mb-1">
+              <Bell size={12} className="mr-1" />
+              Admin Message
             </div>
-            <span>{message}</span>
+            <p className="text-xs">{message}</p>
           </div>
         )}
       </div>

@@ -7,7 +7,7 @@ const Footer = () => {
       <div className="container mx-auto flex flex-col md:flex-row justify-between items-center">
         <div className="mb-4 md:mb-0">
           <h3 className="text-lg font-bold">DORCAS MINISTRIES</h3>
-          <p className="text-sm">Empowering communities through faith and service.</p>
+          <p className="text-sm">YOUR WORK WILL ACCOMPANY YOU.</p>
         </div>
         <nav className="mb-4 md:mb-0">
           <ul className="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-6">
@@ -32,7 +32,7 @@ const Footer = () => {
           </ul>
         </nav>
         <div className="text-sm">
-          <p>&copy; {new Date().getFullYear()}manzi</p>
+          <p>&copy; {new Date().getFullYear()}dorcasministries</p>
         </div>
       </div>
     </footer>
