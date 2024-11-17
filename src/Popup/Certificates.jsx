@@ -8,7 +8,7 @@ const Certificates = () => {
       id: 1,
       image: certificate,
       title: 'Certificate of Excellence',
-      description: 'Awarded for outstanding achievement',
+      description: 'Recent certification for Ministry pastors',
       date: '2024'
     },
     // Add more certificates as needed
