@@ -28,6 +28,7 @@ const Header = () => {
       subMenu: [
         { title: 'Press Gallery', link: '/Gallery' },
         { title: 'Video Gallery', link: '/videos' },
+        { title: 'Certificates', link: '/certificates' },
       ],
     },
     {
@@ -118,7 +119,7 @@ const Header = () => {
                     }}
                   >
                     <span
-                      className={`text-white ${location.pathname === item.link || isSubMenuActive(item) ? 'border-b-2 border-red-500 font-bold' : ''} hover:underline`}
+                      className={`text-white ${location.pathname === item.link || isSubMenuActive(item) ? 'border-b-2 border-greenn- font-bold' : ''} hover:underline`}
                     >
                       {item.title}
                     </span>
@@ -147,7 +148,7 @@ const Header = () => {
                                     href={subItem.link}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="flex items-center text-sm text-white hover:text-red-500 transition-colors"
+                                    className="flex items-center text-sm text-white hover:bg-green-50 transition-colors"
                                     onClick={(e) => e.stopPropagation()}
                                   >
                                     {subItem.title}
@@ -155,7 +156,7 @@ const Header = () => {
                                   </a>
                                 ) : (
                                   <motion.div
-                                    className="flex items-center text-sm text-white hover:text-red-500 transition-colors cursor-pointer"
+                                    className="flex items-center text-sm text-white hover:text-greenn-500 transition-colors cursor-pointer"
                                     onClick={(e) => {
                                       e.stopPropagation();
                                       handleNavigation(subItem.link);

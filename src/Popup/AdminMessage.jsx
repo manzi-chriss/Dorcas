@@ -46,8 +46,8 @@ const AdminMessage = () => {
           <Bell size={20} />
         </button>
         {visible && (
-          <div className="absolute right-0 bottom-12 w-64 bg-blue-600 text-white rounded-lg shadow-lg p-2 text-sm">
-            <div className="flex items-center text-xs font-semibold mb-1">
+          <div className="absolute right-0 bottom-12 w-64 bg-green-50 text-black rounded-lg shadow-lg p-2 text-sm">
+            <div className="flex items-center  text-xs font-semibold mb-1">
               <Bell size={12} className="mr-1" />
               Admin Message
             </div>

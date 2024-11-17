@@ -2,8 +2,8 @@ import React from 'react';
 
 const Vision = () => {
   return (
-    <div className="min-h-screen flex items-center bg-black justify-center  p-6">
-      <div className="max-w-4xl bg-white shadow-md rounded-lg p-8 text-center">
+    <div className="min-h-screen flex items-center bg-gree justify-center  p-6">
+      <div className="max-w-4xl bg-green-50 shadow-md rounded-lg p-8 text-center">
         <h1 className="text-4xl font-bold text-gray-800 mb-6">Our Vision</h1>
         <p className="text-lg text-gray-600">
         
