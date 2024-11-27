@@ -29,6 +29,9 @@ const Footer = () => {
             <li>
               <NavLink to="/history" className="hover:underline">History</NavLink>
             </li>
+            <li>
+              <NavLink to="/Certificates" className="hover:underline">Certificates</NavLink>
+            </li>
           </ul>
         </nav>
         <div className="text-sm">

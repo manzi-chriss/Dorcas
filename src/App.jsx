@@ -19,6 +19,7 @@ import AdminMessage from './Popup/AdminMessage';
 import AdminLoginPage from './components/Admin/AdminLoginPage';
 import ZoomNotificationPopup from './Popup/ZoomNotificationPopup';
 import Certificates from './Popup/Certificates';
+import ImagePopup from './Popup/ImagePopUp';
 import './App.css';
 
 function App() {
@@ -60,6 +61,7 @@ function App() {
           <AdminMessage /> 
           <ZoomNotificationPopup />  {/* Zoom notification popup */}
           <NotificationPopup />
+          <ImagePopup /> 
      
           <div className="h-16" />
           <Footer />
