@@ -1,4 +1,12 @@
 import { useState, useEffect, memo } from 'react';
+import { 
+  Star, 
+  Award, 
+  Calculator, 
+  Handshake, 
+  BookOpen, 
+  Users 
+} from 'lucide-react';
 import member1 from '../../assets/img/member.jpg';
 import member2 from '../../assets/img/member2.jpg';
 import member3 from '../../assets/img/member3.jpg';
@@ -7,12 +15,42 @@ import member5 from '../../assets/img/member5.jpg';
 import member6 from '../../assets/img/member6.jpg';
 
 const teamMembers = [
-  { name: 'APOSTLE CLAIRE', position: 'Founder', image: member1 },
-  { name: 'PASTOR JEAN', position: 'WISER', image: member2 },
-  { name: 'EV LILIANE', position: 'CO ACCOUNTANT', image: member3 },
-  { name: 'DEACON BEATRICE', position: 'WISER', image: member4 },
-  { name: 'EV. UWASE NELLY', position: 'ACCOUNTANT', image: member5 },
-  { name: 'EV NELLA', position: 'SECRETARY', image: member6 },
+  { 
+    name: 'APOSTLE CLAIRE', 
+    position: 'Founder', 
+    image: member1,
+    icon: Star
+  },
+  { 
+    name: 'PASTOR JEAN', 
+    position: 'WISER', 
+    image: member2,
+    icon: Handshake
+  },
+  { 
+    name: 'EV LILIANE', 
+    position: 'CO ACCOUNTANT', 
+    image: member3,
+    icon: Calculator
+  },
+  { 
+    name: 'DEACON BEATRICE', 
+    position: 'WISER', 
+    image: member4,
+    icon: BookOpen
+  },
+  { 
+    name: 'EV. UWASE NELLY', 
+    position: 'ACCOUNTANT', 
+    image: member5,
+    icon: Calculator
+  },
+  { 
+    name: 'EV NELLA', 
+    position: 'SECRETARY', 
+    image: member6,
+    icon: Users
+  },
 ];
 
 const Team = () => {
@@ -53,12 +91,12 @@ const Team = () => {
   return (
     <div className="flex flex-col items-center w-full max-w-full mx-auto p-4 sm:p-6 bg-black text-white">
       <div className="p-4 sm:p-6 text-center">
-        <h2 className="text-2xl text-gray-500 sm:text-3xl md:text-4xl font-extrabold mb-4 leading-tight">
+        <h2 className="text-2xl text-gray-500 sm:text-3xl md:text-4xl font-extrabold mb-4 leading-tight flex items-center justify-center">
+          <Users className="mr-4 text-blue-500" size={36} />
           Meet Our Team
         </h2>
         <p className="text-sm sm:text-md md:text-lg text-gray-300 leading-relaxed mb-6">
-         
-Our team is made up of highly anointed and talented in Serving God, this team helps the whole MINISTRY through uplifting and empower individuals by providing support, services to the people and financially, they are always there for who needs them, we strive to create Happy to the people who doesn’t.
+          Our team is made up of highly anointed and talented in Serving God, this team helps the whole MINISTRY through uplifting and empower individuals by providing support, services to the people and financially, they are always there for who needs them, we strive to create Happy to the people who doesn't.
         </p>
       </div>
       <div className="relative w-full h-64 sm:h-96 md:h-[28rem] flex items-center justify-center mt-8 overflow-hidden">
@@ -76,7 +114,11 @@ Our team is made up of highly anointed and talented in Serving God, this team he
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-60"></div>
               <div className="absolute bottom-0 p-2 sm:p-4 text-center">
-                <h3 className="text-sm sm:text-lg md:text-xl font-bold">{member.name}</h3>
+                {/* Add icon before name */}
+                <div className="flex justify-center items-center mb-1">
+                  {member.icon && <member.icon className="mr-2 text-blue-400" size={20} />}
+                  <h3 className="text-sm sm:text-lg md:text-xl font-bold">{member.name}</h3>
+                </div>
                 <p className="text-xs sm:text-sm md:text-md">{member.position}</p>
               </div>
             </div>
